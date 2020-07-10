@@ -1,4 +1,6 @@
 import os
+import django_heroku
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hi98l#gk&=bun52rdad)$_%rj!ux1pnk6j^jg=u77p)3*4uek2'
 DEBUG = True
@@ -66,3 +68,6 @@ USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'client', "build", "static"),)
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
