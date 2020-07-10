@@ -1,1 +1,1 @@
-web: gunicorn datasets.wsgi
+web: cd tempdrop && gunicorn tempdrop.wsgi
