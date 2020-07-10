@@ -1,6 +1,6 @@
 import boto3
 
-from server.library.data_store import DataStore
+from server.library.data_store.data_store import DataStore
 
 
 class S3DataStore(DataStore):

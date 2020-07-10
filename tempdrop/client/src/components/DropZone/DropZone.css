@@ -1,0 +1,23 @@
+
+.drop-container {
+  height: 200px;
+  width: 800px;
+  background-color: #F5F4FB;
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.drop-message {
+  line-height: 200px;
+}
+
+.progress {
+  display: none;
+  margin: 0 auto;
+  line-height: 200px;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: green;
+}
