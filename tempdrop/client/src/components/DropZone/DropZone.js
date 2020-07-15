@@ -43,20 +43,31 @@ const DropZone = () => {
     e.preventDefault()
   }
 
+  const browseFile = e => {
+    e.preventDefault()
+    handleFileUpload(e.target.files[0])
+  }
+
   const fileDrop = e => {
     e.preventDefault()
     const files = e.dataTransfer.files
     if (files.length === 0) {
       return
     }
-    const file = files[0]
+    handleFileUpload(files[0])
+  }
+
+  const handleFileUpload = file => {
     if (file.size > (2**20) * 50) {
-      alert('file too big')
+      const success_element = document.querySelector('#result_text')
+      success_element.innerHTML = `<h2>File is too big!</h2>`
       return
     }
     const dropMessage = document.getElementById('drop-message')
+    const browseButton = document.getElementById('upload-input-container')
     const progressBar = document.getElementById('progress')
     dropMessage.style.display = 'none'
+    browseButton.style.display = 'none'
     progressBar.style.display = 'block'
     const formData = new FormData()
     formData.append('uploaded_file', file)
@@ -66,8 +77,23 @@ const DropZone = () => {
       },
       onUploadProgress: (p) => setUploadProgress((p.loaded / p.total) * 100)
     }).then(response => {
-      const success_element = document.querySelector('#success_text')
-      success_element.innerHTML = `<h2>Here is your share link: <a href='/share/${response.data.share_id}'>Share Link</a></h2>`
+      const shareLink = `${window.location}share/${response.data.share_id}`
+      const resultElement = document.querySelector('#result_text')
+      const shareLinkInput = document.createElement('input')
+      shareLinkInput.className = 'share-link-input'
+      shareLinkInput.readOnly = true
+      shareLinkInput.type = 'text'
+      shareLinkInput.value = shareLink
+      const copyButton = document.createElement('button')
+      copyButton.className = 'copy-button'
+      copyButton.innerHTML = 'Copy'
+      copyButton.onclick = () => {
+        shareLinkInput.select()
+        document.execCommand('copy')
+        shareLinkInput.focus()
+      }
+      resultElement.appendChild(copyButton)
+      resultElement.appendChild(shareLinkInput)
     })
   }
 
@@ -79,12 +105,20 @@ const DropZone = () => {
       onDragLeave={dragLeave}
       onDrop={fileDrop}>
       <div className='drop-message' id='drop-message'>
-        Drop your file here
+        <span>Drop your file here</span>
+        <span>OR</span>
+      </div>
+      <div className='upload-input-container' id='upload-input-container'>
+        <label for='upload-input' class='upload-input'>Browse</label>
+        <input id='upload-input' type='file' onChange={browseFile} hidden />
       </div>
       <div className='progress' id='progress'>
-        <CircularProgressWithLabel value={uploadProgress} />
+        <CircularProgressWithLabel
+          value={uploadProgress}
+          size='5em'
+          thickness={5} />
       </div>
-      <div id='success_text'></div>
+      <div className='result-text' id='result_text'></div>
     </div>
   )
 }

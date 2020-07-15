@@ -1,23 +1,71 @@
-
 .drop-container {
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
   width: 800px;
   background-color: #F5F4FB;
   border-radius: 5px;
   margin: 0 auto;
+  margin-top: 3em;
   text-align: center;
+  border: 2px dashed #ddd7ff;
 }
 
-.drop-message {
-  line-height: 200px;
+.drop-container:-moz-drag-over, .drop-message:-moz-drag-over {
+  background: #9b91d1;
+}
+
+.drop-message span {
+  display: block;
+  font-weight: 500;
+  font-size: 1em;
+  color: #c4bfe0;
+}
+
+.upload-input-container {
+  padding-top: 1.5em;
+}
+
+.upload-input {
+  background: #43339E;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.8em 1em;
+  border-radius: 0.2em;
 }
 
 .progress {
   display: none;
-  margin: 0 auto;
-  line-height: 200px;
 }
 
 .MuiCircularProgress-colorPrimary {
   color: green;
+}
+
+.result-text {
+  width: 100%;
+  padding-top: 1em;
+}
+
+.share-link-input {
+  width: 30%;
+  padding: 0.8em 1em;
+  border: 1px solid #CCC;
+  border-top-right-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+}
+
+.copy-button {
+  margin: 0;
+  border: 0;
+  background: #FFF;
+  padding: 0.8em 1em;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-top-left-radius: 0.2em;
+  border-bottom-left-radius: 0.2em;
 }
