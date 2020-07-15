@@ -1,8 +1,7 @@
 import os
 import uuid
 
-from django.http import HttpResponse, JsonResponse, FileResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
 
 from server.library.data_store.s3_data_store import S3DataStore
 from server.models import FileInfo
@@ -10,10 +9,6 @@ from server.models import FileInfo
 
 data_store = S3DataStore(os.environ['ACCESS_KEY'], os.environ['SECRET_KEY'],
   'tempdrop-space')
-
-
-def index(request):
-  return render(request, 'build/index.html')
 
 
 def add_file(request):
