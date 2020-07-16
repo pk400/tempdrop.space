@@ -14,6 +14,7 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'storages'
 ]
 MIDDLEWARE = [
   'django.middleware.security.SecurityMiddleware',
@@ -69,5 +70,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'client', "build", "static"),)
 
-# Activate Django-Heroku.
+# django-storages: S3Boto3Storage
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'tempdrop-space'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = 'tempdrop.storages.s3boto3.media_storage'
+
+# https://github.com/jschneier/django-storages/issues/381
+AWS_DEFAULT_ACL = None
+
+# Heroku
 django_heroku.settings(locals())
