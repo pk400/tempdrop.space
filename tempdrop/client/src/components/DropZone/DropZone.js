@@ -77,7 +77,7 @@ const DropZone = () => {
       },
       onUploadProgress: (p) => setUploadProgress((p.loaded / p.total) * 100)
     }).then(response => {
-      const shareLink = `${window.location}share/${response.data.share_id}`
+      const shareLink = `${window.location.host}/share/${response.data.share_id}`
       const resultElement = document.querySelector('#result_text')
       const shareLinkInput = document.createElement('input')
       shareLinkInput.className = 'share-link-input'
@@ -90,7 +90,6 @@ const DropZone = () => {
       copyButton.onclick = () => {
         shareLinkInput.select()
         document.execCommand('copy')
-        shareLinkInput.focus()
       }
       resultElement.appendChild(copyButton)
       resultElement.appendChild(shareLinkInput)
