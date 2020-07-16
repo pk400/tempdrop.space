@@ -2,7 +2,7 @@ import os
 import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'hi98l#gk&=bun52rdad)$_%rj!ux1pnk6j^jg=u77p)3*4uek2'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = []
 INSTALLED_APPS = [
