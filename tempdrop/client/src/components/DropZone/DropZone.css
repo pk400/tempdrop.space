@@ -24,8 +24,9 @@
   color: #c4bfe0;
 }
 
-.upload-input-container {
-  padding-top: 1.5em;
+.upload-input-container label {
+  display: inline-block;
+  height: 100%;
 }
 
 .upload-input {
@@ -35,10 +36,6 @@
   text-transform: uppercase;
   padding: 0.8em 1em;
   border-radius: 0.2em;
-}
-
-.progress {
-  display: none;
 }
 
 .MuiCircularProgress-colorPrimary {
@@ -68,4 +65,8 @@
   border-left: 1px solid #CCC;
   border-top-left-radius: 0.2em;
   border-bottom-left-radius: 0.2em;
+}
+
+.confirm-screen {
+  width: 100%;
 }

@@ -1,0 +1,10 @@
+.td-button {
+  background-color: #43339E;
+  border: 0;
+  display: inline-block;
+  height: 100%;
+  padding: 0.7em 1em;
+  border-radius: 0.2em;
+  color: #FFFFFF;
+  font-weight: bold;
+}

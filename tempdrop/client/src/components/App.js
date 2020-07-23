@@ -12,10 +12,10 @@ import DropZone from './DropZone/DropZone'
 
 const App = () =>
   <Router>
-      <div style={{display: 'none'}}>
-        <Link to='/'>Home</Link>
-        <Link to='/share'>Share</Link>
-      </div>
+    <div style={{display: 'none'}}>
+      <Link to='/'>Home</Link>
+      <Link to='/share'>Share</Link>
+    </div>
     <header>
       <h1>TempDrop</h1>
       <h2>A safe place to temporarily drop your file and share with others.</h2>
